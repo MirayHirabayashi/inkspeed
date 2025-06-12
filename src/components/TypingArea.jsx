@@ -12,10 +12,10 @@ const TypingArea = ({
   resetGame,
 }) => {
   return (
-    <div className="border border-[#ced4da] rounded-[5px] px-5 pb-5 pt-0">
+    <div className="border bg-black border-[#ced4da] rounded-[5px] px-5 pb-5 pt-0">
       {/* Text Section */}
       <div className="border-b border-[#ced4da]">
-        <p className="break-all text-left">
+        <p className="break-all text-white text-left">
           {typingText.split("").map((letter, index) => {
   const isCaret = index === charIndex;
   const shouldHideCaret = isCaret && timeLeft <= 0;
@@ -28,7 +28,7 @@ const TypingArea = ({
       }`}
       style={{
         visibility: shouldHideCaret ? "hidden" : "visible",
-        color: letter !== " " ? "black" : "transparent",
+        color: letter !== " " ? "white" : "transparent",
       }}
     >
       {letter !== " " ? letter : "_"}
@@ -40,7 +40,7 @@ const TypingArea = ({
       </div>
 
       {/* Stats Section */}
-      <div className="flex justify-between items-center mt-[5px]">
+      <div className="flex justify-between text-white items-center mt-[5px]">
         <ul className="flex flex-wrap justify-between items-center w-full sm:w-[calc(100%-120px)] p-0 m-0 list-none">
           <li className="mx-2">
             <p className="m-[5px] text-xs">Time Left:</p>

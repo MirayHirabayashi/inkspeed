@@ -129,10 +129,9 @@ const TypingSpeedTest = () => {
   const isGameOver = timeLeft <= 0;
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-200 p-4">
-      <div className="max-w-[650px] w-full bg-white p-8 rounded-xl border border-gray-300 shadow-md relative">
+      <div className="mt-20 max-w-[650px] w-full bg-gray-950 p-8 rounded-xl border border-gray-300 shadow-md relative">
         {isGameOver && (
-          <div className="absolute inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center text-gray-700 p-8">
+          <div className="absolute inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white p-8">
             <h2 className="text-2xl font-bold mb-4">Time's up!</h2>
             <p className="mb-2">WPM: {WPM}</p>
             <p className="mb-2">CPM: {CPM}</p>
@@ -166,7 +165,6 @@ const TypingSpeedTest = () => {
           resetGame={resetGame}
         />
       </div>
-    </div>
   );
 };
 
