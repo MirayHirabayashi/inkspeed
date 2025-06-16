@@ -18,27 +18,26 @@ const TypingSpeedTest = () => {
   const [usedParagraphIndices, setUsedParagraphIndices] = useState([]);
   const [totalTypedChars, setTotalTypedChars] = useState(0);
 
-
   const loadParagraph = () => {
-  let availableIndices = paragraphs
-    .map((_, idx) => idx)
-    .filter(idx => !usedParagraphIndices.includes(idx));
+    let availableIndices = paragraphs
+      .map((_, idx) => idx)
+      .filter((idx) => !usedParagraphIndices.includes(idx));
 
-  if (availableIndices.length === 0) {
-    setUsedParagraphIndices([]);
-    availableIndices = paragraphs.map((_, idx) => idx);
-  }
+    if (availableIndices.length === 0) {
+      setUsedParagraphIndices([]);
+      availableIndices = paragraphs.map((_, idx) => idx);
+    }
 
-  const ranIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+    const ranIndex =
+      availableIndices[Math.floor(Math.random() * availableIndices.length)];
 
-  setTypingText(paragraphs[ranIndex]);
-  setInpFieldValue("");
-  setCharIndex(0);
-  setIsTyping(false);
-  setUsedParagraphIndices(prev => [...prev, ranIndex]);
-  inputRef.current?.focus();
-};
-
+    setTypingText(paragraphs[ranIndex]);
+    setInpFieldValue("");
+    setCharIndex(0);
+    setIsTyping(false);
+    setUsedParagraphIndices((prev) => [...prev, ranIndex]);
+    inputRef.current?.focus();
+  };
 
   const updateMetrics = (cIndex, mistakeCount) => {
     const timeUsed = MAX_TIME - timeLeft;
@@ -52,18 +51,18 @@ const TypingSpeedTest = () => {
 
   const handleKeyDown = (event) => {
     if (event.key === "Backspace" && charIndex > 0 && timeLeft > 0) {
-  const newCharIndex = charIndex - 1;
-  if (typingText[newCharIndex] !== inpFieldValue[newCharIndex]) {
-    setMistakes((prev) => {
-      const updated = prev - 1;
-      updateMetrics(totalTypedChars - 1, updated);
-      return updated;
-    });
-  }
-  setCharIndex(newCharIndex);
-  setInpFieldValue((prev) => prev.slice(0, -1));
-  setTotalTypedChars((prev) => prev - 1);
-}
+      const newCharIndex = charIndex - 1;
+      if (typingText[newCharIndex] !== inpFieldValue[newCharIndex]) {
+        setMistakes((prev) => {
+          const updated = prev - 1;
+          updateMetrics(totalTypedChars - 1, updated);
+          return updated;
+        });
+      }
+      setCharIndex(newCharIndex);
+      setInpFieldValue((prev) => prev.slice(0, -1));
+      setTotalTypedChars((prev) => prev - 1);
+    }
   };
 
   const initTyping = (event) => {
@@ -86,7 +85,6 @@ const TypingSpeedTest = () => {
         updateMetrics(totalTypedChars + 1, mistakes);
       }
       setCharIndex((prev) => prev + 1);
-
     }
   };
 
@@ -122,37 +120,41 @@ const TypingSpeedTest = () => {
     }
   }, [charIndex, typingText.length, timeLeft]);
 
-  const accuracy = totalTypedChars > 0
-  ? Math.round(((totalTypedChars - mistakes) / totalTypedChars) * 100)
-  : 100;
+  const accuracy =
+    totalTypedChars > 0
+      ? Math.round(((totalTypedChars - mistakes) / totalTypedChars) * 100)
+      : 100;
 
   const isGameOver = timeLeft <= 0;
 
   return (
-      <div className="mt-20 max-w-[650px] w-full bg-gray-950 p-8 rounded-xl border border-gray-300 shadow-md relative">
-        {isGameOver && (
-          <div className="absolute inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white p-8">
-            <h2 className="text-2xl font-bold mb-4">Time's up!</h2>
-            <p className="mb-2">WPM: {WPM}</p>
-            <p className="mb-2">CPM: {CPM}</p>
-            <p className="mb-4">Accuracy: {accuracy}%</p>
-            <button
-              onClick={resetGame}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Try Again
-            </button>
-          </div>
-        )}
-        <input
-          type="text"
-          ref={inputRef}
-          className="absolute opacity-0 z-[-1] input-field"
-          value={inpFieldValue}
-          onChange={initTyping}
-          onKeyDown={handleKeyDown}
-          onPaste={(e) => e.preventDefault()}
-        />
+    <div className="mt-20 max-w-[650px] w-full mx-auto text-white font-sans">
+      {isGameOver && (
+        <div className="absolute inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white p-8 z-10">
+          <h2 className="text-3xl font-semibold mb-4">Time's up!</h2>
+          <p className="mb-2 text-lg">WPM: {WPM}</p>
+          <p className="mb-2 text-lg">CPM: {CPM}</p>
+          <p className="mb-4 text-lg">Accuracy: {accuracy}%</p>
+          <button
+            onClick={resetGame}
+            className="px-5 py-2 text-sm font-medium bg-blue-600 hover:bg-blue-700 transition rounded"
+          >
+            Try Again
+          </button>
+        </div>
+      )}
+
+      <input
+        type="text"
+        ref={inputRef}
+        className="absolute opacity-0 pointer-events-none input-field"
+        value={inpFieldValue}
+        onChange={initTyping}
+        onKeyDown={handleKeyDown}
+        onPaste={(e) => e.preventDefault()}
+      />
+
+      <div className="mb-6">
         <TypingArea
           typingText={typingText}
           inpFieldValue={inpFieldValue}
@@ -165,13 +167,8 @@ const TypingSpeedTest = () => {
           resetGame={resetGame}
         />
       </div>
+    </div>
   );
 };
 
 export default TypingSpeedTest;
-
-
-
-
-
-
