@@ -14,7 +14,7 @@ const TypingArea = ({
     <div className="w-full">
       {/* Typing Text */}
       <div className="mb-6">
-        <p className="text-white text-left text-xl leading-relaxed break-words">
+        <p className="text-white text-[30px] text-left text-xl leading-relaxed break-words">
           {typingText.split("").map((letter, index) => {
             const isCaret = index === charIndex;
             const shouldHideCaret = isCaret && timeLeft <= 0;
