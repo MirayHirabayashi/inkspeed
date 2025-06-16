@@ -12,7 +12,7 @@ A minimalist, dark-themed typing speed test web app built with **React** and **T
 
 ---
 
-## 🖥️ Planned Features
+## 🖥️ Features
 
 - 🌙 Dark mode with minimalist UI
 - ⌨️ Typing test with randomly generated words
