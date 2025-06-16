@@ -1,12 +1,14 @@
 # inkspeed
 
-A minimalist, dark-themed typing speed test web app built with **React** and **Tailwind CSS**. The project is currently under development and aims to deliver a clean and focused typing experience with real-time stats and responsive design.
+A minimalist, dark-themed typing speed test web app built with **React** and **Tailwind CSS**. It delivers a clean and focused typing experience with real-time stats and a responsive design.
+
+🔗 [**Live Demo**](https://inkspeed.vercel.app/)
 
 ---
 
 ## 🚧 Project Status
 
-> This project is currently in the early stages of development. Core functionality such as timing, WPM calculation, and UI layout are being implemented.
+> The app will continue to be improved with additional features, optimizations, and refinements.
 
 ---
 
@@ -23,9 +25,19 @@ A minimalist, dark-themed typing speed test web app built with **React** and **T
 
 ## 🛠️ Tech Stack
 
-- [React]
-- [Tailwind CSS]
-- [Vite]
+- [React](https://reactjs.org/)  
+- [Tailwind CSS](https://tailwindcss.com/)  
+- [Vite](https://vitejs.dev/)  
 
 ---
+
+## 📌 Contributing
+
+Contributions are welcome! If you'd like to suggest a feature or report a bug, feel free to open an issue or submit a pull request.
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
 
